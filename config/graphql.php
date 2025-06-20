@@ -72,30 +72,6 @@ return [
     //      ],
     //  ]
     //
-    'schemas' => [
-        'default' => [
-            'query' => [
-                // ExampleQuery::class,
-            ],
-            'mutation' => [
-                // ExampleMutation::class,
-            ],
-            // The types only available in this schema
-            'types' => [
-                // ExampleType::class,
-            ],
-
-            // Laravel HTTP middleware
-            'middleware' => null,
-
-            // Which HTTP methods to support; must be given in UPPERCASE!
-            'method' => ['GET', 'POST'],
-
-            // An array of middlewares, overrides the global ones
-            'execution_middleware' => null,
-        ],
-    ],
-
     // The global types available to all schemas.
     // You can then access it from the facade like this: GraphQL::type('user')
     //
@@ -114,6 +90,12 @@ return [
             'query' => [
                 'tareas' => App\GraphQL\Queries\TareasQuery::class,
             ],
+            'mutation' => [
+                'crearTarea' => App\GraphQL\Mutations\CrearTareaMutation::class,
+                'actualizarTarea' => App\GraphQL\Mutations\ActualizarTareaMutation::class,
+                'eliminarTarea' => App\GraphQL\Mutations\EliminarTareaMutation::class,
+            ],
+            'middleware' => ['auth:api'], // ← A TODAS las mutaciones
         ],
     ],
     // This callable will be passed the Error object for each errors GraphQL catch.

@@ -34,7 +34,7 @@ class TareasQuery extends Query
         $query = Tarea::query();
 
         if (isset($args['titulo'])) {
-            $query->where('titulo', 'like', '%' . $args['titulo'] . '%');
+            $query->where('titulo', 'like', '%' . $args['titulo'] . '%'); //->where() es un método que viene del Query Builder.
         }
 
         if (isset($args['completada'])) {
